@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'web';
+  description = 'Esta sera la web del proyecto de la clinica';
 }
