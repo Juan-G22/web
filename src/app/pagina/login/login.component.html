@@ -1,15 +1,36 @@
+<div class="card">
+  <div class="card-header ps-5 pt-4 pb-4">
+  <h5 class="mb-0" ><i class="fa-solid fa-user-plus me-3"></i>Inicio de Sesion</h5>
+  </div>
+ 
+ <div class="card-body p-5">
+
+
 <form #f="ngForm" (ngSubmit)="loguearse()">
 
-    <div>
-        <label>Correo electrónico: </label>
-        <input type="email" name="correo" [(ngModel)]="loginDTO.correo" email="true" required="true" />
+  <div class="mb-3 row">
+    <label class="col-sm-2 col-form-label">Correo electrónico: </label>
+    <div class="col-sm-10">
+        <input #correo="ngModel"  [ngClass]="correo.invalid && (correo.dirty || correo.touched) ? 'is-invalid' : ''" type="email" name="correo" [(ngModel)]="loginDTO.correo" email="true" required="true" />
     </div>
+   </div>
 
-    <div>
-      <label>Contraseña: </label>
-      <input type="password" name="password" [(ngModel)]="loginDTO.password" required="true" />
+   <div class="mb-3 row">
+    <label class="col-sm-2 col-form-label"> Contraseña: </label>
+    <div class="col-sm-10">
+      <input #password="ngModel"  [ngClass]="password.invalid && (password.dirty || password.touched) ? 'is-invalid' : ''" type="password" name="password" [(ngModel)]="loginDTO.password" required="true" />
     </div>
+   </div>
 
-    <button type="submit" [disabled]="f.invalid" >Iniciar Sesion</button>
+    <button class="btn btn-primary d-inline-flex" type="submit" [disabled]="f.invalid" >
+      
+      Iniciar Sesion
+    
+    </button>
 
 </form>
+
+</div>
+    
+    
+</div>
