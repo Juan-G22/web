@@ -8,6 +8,7 @@ import { InicioComponent } from './pagina/inicio/inicio.component';
 import { LoginComponent } from './pagina/login/login.component';
 import { RegistroComponent } from './pagina/registro/registro.component';
 import { RegistromedicoComponent } from './pagina/registromedico/registromedico.component';
+import { GestionPqrsComponent } from './pagina/gestion-pqrs/gestion-pqrs.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { RegistromedicoComponent } from './pagina/registromedico/registromedico.
     InicioComponent,
     LoginComponent,
     RegistroComponent,
+    GestionPqrsComponent,
     RegistromedicoComponent
   ],
   imports: [

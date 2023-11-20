@@ -4,12 +4,15 @@ import { InicioComponent } from './pagina/inicio/inicio.component';
 import { LoginComponent } from './pagina/login/login.component';
 import { RegistroComponent } from './pagina/registro/registro.component';
 import { RegistromedicoComponent } from './pagina/registromedico/registromedico.component';
+import { GestionPqrsComponent } from './pagina/gestion-pqrs/gestion-pqrs.component';
 
 const routes: Routes = [
 { path: "", component: InicioComponent },
 { path: "login", component: LoginComponent },
 { path: "registro", component: RegistroComponent },
 { path: "registromedico", component: RegistromedicoComponent },
+{ path: "gestion-pqrs", component: GestionPqrsComponent },
+
 { path: "**", pathMatch: "full", redirectTo: "" }
 
 

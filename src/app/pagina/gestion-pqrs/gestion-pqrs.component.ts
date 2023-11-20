@@ -12,6 +12,7 @@ export class GestionPqrsComponent {
   pqrs: ItemPQRSDTO[];
 constructor( private pqrsService: PqrsService ) {
 this.pqrs = pqrsService.listar();
+
 }
 
 }
