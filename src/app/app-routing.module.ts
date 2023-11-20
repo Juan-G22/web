@@ -12,6 +12,7 @@ const routes: Routes = [
 { path: "registromedico", component: RegistromedicoComponent },
 { path: "**", pathMatch: "full", redirectTo: "" }
 
+
 ];
 
 @NgModule({
