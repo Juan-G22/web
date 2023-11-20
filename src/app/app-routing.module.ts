@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from './pagina/inicio/inicio.component';
 import { LoginComponent } from './pagina/login/login.component';
 import { RegistroComponent } from './pagina/registro/registro.component';
+import { RegistromedicoComponent } from './pagina/registromedico/registromedico.component';
 
 const routes: Routes = [
 { path: "", component: InicioComponent },
 { path: "login", component: LoginComponent },
 { path: "registro", component: RegistroComponent },
+{ path: "registromedico", component: RegistromedicoComponent },
 { path: "**", pathMatch: "full", redirectTo: "" }
 
 ];

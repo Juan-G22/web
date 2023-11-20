@@ -1,0 +1,136 @@
+<div class="card">
+    <div class="card-header ps-5 pt-4 pb-4">
+      <h5 class="mb-0"><i class="fa-solid fa-user-plus me-3"></i>Registro de un nuevo medico</h5>
+    </div>
+  
+    <div class="card-body p-5">
+      <form #f="ngForm" (ngSubmit)="registrar()">
+  
+        <div class="mb-3 row">
+          <label class="col-sm-2 col-form-label"> Nombre: </label>
+          <div class="col-sm-10">
+            <input #nombre="ngModel" [ngClass]="nombre.invalid && (nombre.dirty || nombre.touched) ? 'is-invalid' : ''"
+              type="text" name="nombre" [(ngModel)]="registroMedicoDTO.nombre" required maxlength="200" />
+          </div>
+        </div>
+  
+        <div class="mb-3 row">
+          <label class="col-sm-2 col-form-label">Cédula: </label>
+          <div class="col-sm-10">
+            <input #cedula="ngModel" [ngClass]="cedula.invalid && (cedula.dirty || cedula.touched) ? 'is-invalid' : ''"
+              type="text" name="cedula" class="form-control" [(ngModel)]="registroMedicoDTO.cedula" required maxlength="10"
+              minlength="8" />
+          </div>
+        </div>
+
+          <div class="mb-3 row">
+          <label class="col-sm-2 col-form-label">Ciudad: </label>
+          <div class="col-sm-10">
+            <select name="ciudad" required class="form-select" [(ngModel)]="registroMedicoDTO.ciudad">
+              <option value="" selected>Seleccione una ciudad</option>
+              <option [value]="item" *ngFor="let item of ciudades; index as i">{{item}}</option>
+            </select>
+          </div>
+        </div>
+  
+
+      
+        <div class="mb-3 row">
+          <label class="col-sm-2 col-form-label">Especialidad: </label>
+          <div class="col-sm-10">
+            <select name="especialidad" required class="form-select" [(ngModel)]="registroMedicoDTO.especialidad">
+              <option value="" selected>Seleccione una especialidad</option>
+              <option [value]="item" *ngFor="let item of especialidades; index as i">{{item}}</option>
+            </select>
+          </div>
+        </div>
+  
+        <div class="mb-3 row">
+          <label class="col-sm-2 col-form-label"> Teléfono: </label>
+          <div class="col-sm-10">
+            <input #telefono="ngModel" [ngClass]="telefono.invalid && (telefono.dirty || telefono.touched) ? 'is-invalid' : ''"
+              type="text" name="telefono" [(ngModel)]="registroMedicoDTO.telefono" required maxlength="20" minlength="6" />
+          </div>
+        </div>
+  
+        <div class="mb-3 row">
+          <label class="col-sm-2 col-form-label"> Correo electrónico: </label>
+          <div class="col-sm-10">
+            <input #correo="ngModel" [ngClass]="correo.invalid && (correo.dirty || correo.touched) ? 'is-invalid' : ''"
+              type="email" name="correo" [(ngModel)]="registroMedicoDTO.correo" email="true" required maxlength="80" />
+          </div>
+
+        </div>
+          <div class="mb-3 row">
+          <label class="col-sm-2 col-form-label"> Contraseña: </label>
+          <div class="col-sm-10">
+            <input #password="ngModel" [ngClass]="password.invalid && (password.dirty || password.touched) ? 'is-invalid' : ''"
+              type="password" name="password" [(ngModel)]="registroMedicoDTO.password" required />
+          </div>
+        
+        </div>
+  
+        <div class="mb-3 row">
+          <label class="col-sm-2 col-form-label"> Repetir contraseña: </label>
+          <div class="col-sm-10">
+            <input #confirmaPassword="ngModel"
+              [ngClass]="confirmaPassword.invalid && (confirmaPassword.dirty || confirmaPassword.touched) ? 'is-invalid' : ''"
+              type="password" name="confirmaPassword" [(ngModel)]="registroMedicoDTO.confirmaPassword" required />
+          </div>
+        </div>
+  
+        <div class="mb-3 row">
+          <label class="col-sm-2 col-form-label"> Foto: </label>
+          <div class="col-sm-10">
+            <input type="file" name="urlFoto" class="form-control" required (change)="onFileChange($event)" />
+          </div>
+        </div>
+  
+        <h6 class="col-sm-12 mb-3">Registro de Horarios</h6>
+
+<div class="mb-3 row">
+  <div class="col-sm-6">
+    <label class="col-form-label">Día:</label>
+    <input type="datetime-local" name="dia" class="form-control" [(ngModel)]="horario.dia" required />
+  </div>
+
+  <div class="col-sm-6">
+    <label class="col-form-label">Hora de Inicio:</label>
+    <input type="datetime-local" name="horaInicio" class="form-control" [(ngModel)]="horario.horaInicio" required />
+  </div>
+</div>
+
+<div class="mb-3 row">
+  <div class="col-sm-6">
+    <label class="col-form-label">Hora de Salida:</label>
+    <input type="datetime-local" name="horaSalida" class="form-control" [(ngModel)]="horario.horaSalida" required />
+  </div>
+</div>
+
+<div class="mb-3 row">
+  <button class="btn btn-primary" type="button" (click)="agregarHorario()">
+    <i class="fa-solid fa-clock me-1"></i>Agregar Horario
+  </button>
+</div>
+
+<!-- Lista de horarios registrados -->
+<div *ngIf="horarios.length > 0" class="mb-3">
+  <h6>Horarios Registrados:</h6>
+  <ul>
+    <li *ngFor="let h of horarios">{{ h.dia }} - {{ h.horaInicio }} a {{ h.horaSalida }}</li>
+  </ul>
+</div>
+
+  
+        <div class="alert alert-danger" role="alert" *ngIf="!sonIguales()">Las contraseñas no coinciden</div>
+  
+        <button class="btn btn-primary" type="submit" [disabled]="f.invalid || !sonIguales()">
+          <i class="fa-solid fa-circle-plus me-1"></i>Registrarse
+        </button>
+  
+      </form>
+    </div>
+  </div>
+  
+          
+             
