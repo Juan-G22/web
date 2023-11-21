@@ -1,0 +1,58 @@
+<div class="card">
+    <div class="card-header ps-5 pt-4 pb-4">
+    <h5 class="mb-0" ><i class="fa-solid fa-user-plus me-3"></i>Registro de una nueva cita
+     </h5>
+    </div>
+   
+   <div class="card-body p-5">
+ 
+    <form #f="ngForm" (ngSubmit)="crearCita()">
+ 
+ 
+     <div class="mb-3 row">
+       
+       <label class="col-sm-2 col-form-label">Cédula del paciente: </label>
+       <div class="col-sm-10">
+       <input #cedula="ngModel"  [ngClass]="cedula.invalid && (cedula.dirty || cedula.touched) ? 'is-invalid' : ''" type= "text" name="cedula"  class="form-control" [(ngModel)]="registroCitaDTO.cedulaPaciente" required="true" maxlength="10" minlength="8"/>
+       </div>
+ 
+    </div>
+     
+     
+    <div class="mb-3 row">
+     <div class="col-sm-6">
+        <label class="col-form-label">Fecha:</label>
+        <input #fecha="ngModel"  [ngClass]="fecha.invalid && (fecha.dirty || fecha.touched) ? 'is-invalid' : ''" type="datetime-local" name="fecha" [(ngModel)]="registroCitaDTO.fecha" required="true" />
+      </div>
+    </div>
+
+
+    <div class="mb-3 row">
+       
+      <label class="col-sm-2 col-form-label">Cédula del Medico: </label>
+      <div class="col-sm-10">
+      <input #cedula="ngModel"  [ngClass]="cedula.invalid && (cedula.dirty || cedula.touched) ? 'is-invalid' : ''" type= "text" name="cedula"  class="form-control" [(ngModel)]="registroCitaDTO.cedulaMedico" required="true" maxlength="10" minlength="8"/>
+      </div>
+
+   </div>
+      
+     
+
+     <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Motivo: </label>
+        <div class="col-sm-10">
+        <textarea #motivo="ngModel"
+      
+         [ngClass]="motivo.invalid && (motivo.dirty || motivo.touched) ? 'is-invalid' : ''"
+        type="text" [(ngModel)]="registroCitaDTO.motivo" name="motivo" required class="form-control"
+         ></textarea>
+        </div>
+        </div>
+         <button class="btn btn-primary" type="submit" [disabled]="f.invalid">
+          <i class="fa-solid fa-circle-plus me-1"></i>Crear Cita
+         </button>
+     
+    </form>
+     
+     
+ </div>

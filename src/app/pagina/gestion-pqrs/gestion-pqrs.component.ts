@@ -9,7 +9,7 @@ import { PqrsService } from 'src/app/servicios/pqrs.service';
 })
 export class GestionPqrsComponent {
 
-  pqrs: ItemPQRSDTO[];
+pqrs: ItemPQRSDTO[];
 constructor( private pqrsService: PqrsService ) {
 this.pqrs = pqrsService.listar();
 
